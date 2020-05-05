@@ -14,3 +14,4 @@ jobs:
         uses: 3obpo/tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: 3obpo
