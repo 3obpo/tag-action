@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # config
-default_semvar_bump=${DEFAULT_BUMP:-minor}
+default_semvar_bump=${DEFAULT_BUMP:-patch}
 with_v=${WITH_V:-false}
 release_branches=${RELEASE_BRANCHES:-master}
 custom_tag=${CUSTOM_TAG}
@@ -51,10 +51,10 @@ echo $log
 # get commit logs and determine home to bump the version
 # supports #major, #minor, #patch (anything else will be 'minor')
 case "$log" in
-    *MAJOR:* ) new=$(semver bump major $tag);;
-    *FEATURE:* ) new=$(semver bump minor $tag);;
-    *FIX:* ) new=$(semver bump patch $tag);;
-#    * ) new=$(semver bump `echo $default_semvar_bump` $tag);;
+    *#major:* ) new=$(semver bump major $tag);;
+    *#feature:* ) new=$(semver bump minor $tag);;
+    *#patch* ) new=$(semver bump patch $tag);;
+    * ) new=$(semver bump `echo $default_semvar_bump` $tag);;
 esac
 
 # did we get a new tag?
