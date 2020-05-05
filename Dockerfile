@@ -5,8 +5,8 @@ LABEL "maintainer"="3obpo"
 
 COPY ./contrib/semver ./contrib/semver
 RUN install ./contrib/semver /usr/local/bin
-COPY entrypoint.sh /bin/sh/entrypoint.sh
-RUN chmod +x /bin/sh/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 RUN apk update && apk add bash git curl jq
 
